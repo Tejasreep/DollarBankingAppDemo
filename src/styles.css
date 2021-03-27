@@ -1,0 +1,20 @@
+/* You can add global styles to this file, and also import other style files */
+
+* {
+    margin:0;
+    padding:0
+}
+body {
+    box-sizing: border-box;
+}
+
+nav  {
+    background-color: rgb(10, 59, 151);
+    
+    min-height: 40px;
+}
+
+nav >a, .navbar-toggler-icon, .nav-item {
+    /* color: whitesmoke !important;
+} */
+}

@@ -1,0 +1,19 @@
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Check Balance</h5>
+          <form [formGroup]="checkBalanceForm" (ngSubmit)="onSubmit(checkBalanceForm)">
+              <div class="form-group">
+                <label for="userList">Select User</label>
+                <select class="form-control" formControlName="userName" id="userList" [(ngModel)]="selectedUser">
+                  <option *ngFor="let user of userListJson" [value]="user.name">{{user.name}}</option>
+                </select>
+              </div>
+            <button type="submit" class="btn btn-primary" [disabled]="!checkBalanceForm.valid">Check</button>
+          </form>
+          Balance Amount is :<span [ngStyle]="{'color':balance < 0 ? 'red' : 'green'}"><strong>{{balance}} </strong></span>
+        </div>
+      </div>
+  </div>
+  
+  

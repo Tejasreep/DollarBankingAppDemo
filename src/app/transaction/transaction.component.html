@@ -1,0 +1,31 @@
+<div class="container">
+    <div  *ngIf="showMessage" >
+        <span style="color: red;text-align: center;">INVALID TRANSACTION</span>
+    </div>
+    
+    <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">MAKE A TRANSACTION</h5>
+          <form [formGroup]="transactionForm" (ngSubmit)="onSubmit(transactionForm)">
+              <div class="form-group">
+                <label for="fromUser">From User</label>
+                <select class="form-control" formControlName="fromUser" id="fromUser" [(ngModel)]="fromSelectedUser">
+                  <option *ngFor="let user of userListJson" [value]="user.name">{{user.name}}</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="toUser">To User</label>
+                <select class="form-control" formControlName="toUser" id="toUser" [(ngModel)]="toSelectedUser">
+                  <option *ngFor="let user of userListJson" [value]="user.name">{{user.name}}</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="amount">Amount</label>
+                <input type="text" class="form-control" id="amount" formControlName="amount" placeholder="Enter amount">
+                <small id="textHelp" class="form-text text-muted">Always enter a valid number</small>
+            </div>
+            <button type="submit" class="btn btn-primary" [disabled]="!transactionForm.valid">Send</button>
+          </form>
+        </div>
+      </div>
+</div>

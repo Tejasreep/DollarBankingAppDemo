@@ -1,0 +1,44 @@
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">CHECK BANK STATEMENT</h5>
+          <form [formGroup]="checkStatementForm" (ngSubmit)="onSubmit(checkStatementForm)">
+              <div class="form-group">
+                <label for="userList">Select User</label>
+                <select class="form-control" formControlName="userName" id="userList" [(ngModel)]="selectedUser">
+                  <option *ngFor="let user of userListJson" [value]="user.name">{{user.name}}</option>
+                </select>
+              </div>
+            <button type="submit" class="btn btn-primary" [disabled]="!checkStatementForm.valid">Check</button>
+          </form>
+        </div>
+      </div>
+  </div>
+  <div class="container">
+   <table class="table">
+      <thead>
+        <tr>
+          <th>USER ID</th>
+          <th>TRANSACTION TYPE</th>
+          <th>AMOUNT</th>
+          <th>DATE</th>
+          <th>ACCOUNT BALANCE</th>
+        </tr>
+      </thead>
+      <tbody *ngIf="transactions.length > 0; else message">
+        <tr  *ngFor="let transaction of transactions">
+          <td>{{transaction.id}}</td>
+          <td>{{transaction.Type == 1 ? 'Credited':'Debited'}}</td>
+          <td>{{transaction.amount}}</td>
+          <td>{{transaction.date}}</td>
+          <td>{{transaction.balance}}</td>
+        </tr>
+      </tbody>
+    </table>
+    
+  </div>
+  <ng-template #message>
+    <div class="container">
+      <span style="text-align: center;">NO TRANSACTIONS FOUND</span>
+    </div>
+  </ng-template>

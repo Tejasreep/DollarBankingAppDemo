@@ -1,0 +1,21 @@
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">CREDIT</h5>
+          <form [formGroup]="creditForm" (ngSubmit)="onSubmit(creditForm)">
+              <div class="form-group">
+                <label for="userList">Select User</label>
+                <select class="form-control" formControlName="userName" id="userList" [(ngModel)]="selectedUser">
+                  <option *ngFor="let user of userListJson" [value]="user.name">{{user.name}}</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="amount">Amount</label>
+                <input type="text" class="form-control" id="amount" formControlName="amount" placeholder="Enter amount">
+                <small id="textHelp" class="form-text text-muted">Always enter a valid number</small>
+            </div>
+            <button type="submit" class="btn btn-primary" [disabled]="!creditForm.valid">Submit</button>
+          </form>
+        </div>
+      </div>
+</div>
